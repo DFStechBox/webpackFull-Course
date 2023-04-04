@@ -1,0 +1,1 @@
+This is the #1 resource to master modern JavaScript! Learn modern ES6+ JavaScript by building real, beautiful projects.
