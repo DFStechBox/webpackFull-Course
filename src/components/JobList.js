@@ -10,7 +10,6 @@ import renderJobDetails from './JobDetails.js';
 import renderSpinner from './Spinner.js';
 import renderError from './Error.js';
 
-
 const renderJobList = () => {
     // remove previous job items
     jobListSearchEl.innerHTML = '';
