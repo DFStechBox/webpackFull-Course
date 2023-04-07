@@ -17,7 +17,7 @@ const renderPaginationButtons = () => {
   // update page numbers
   paginationNumberNextEl.textContent = state.currentPage + 1;
   paginationNumberBackEl.textContent = state.currentPage - 1;
-};
+
 
 const clickHandler = event => {
   // get clicked button
@@ -38,4 +38,4 @@ const clickHandler = event => {
 
 paginationEl.addEventListener('click', clickHandler);
 
-export default renderPaginationButtons
+export default renderPaginationButtons;
