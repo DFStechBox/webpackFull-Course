@@ -11,14 +11,14 @@ import renderJobList from './JobList.js';
 
 const renderPaginationButtons = () => {
   //display back button if we are on page 2 or more
-  if (state.currentPage >= 2) {
+   if (state.currentPage >= 2) {
     paginationBtnBackEl.classList.remove('pagination__button--hidden');
   } else {
     paginationBtnBackEl.classList.add('pagination__button--hidden');
   }
   
-  // display next button if there are more job items on next page
-  if ((state.searchJobItems.length - state.currentPage * RESULTS_PER_PAGE) <= 0) {
+// display next button if there are more job items on next page
+  if ((state.searchJobItems.length - state.currentPage * 7) >= 0) {
     paginationBtnNextEl.classList.add('pagination__button--hidden');
   } else {
     paginationBtnNextEl.classList.remove('pagination__button--hidden');
@@ -29,10 +29,9 @@ const renderPaginationButtons = () => {
   paginationNumberBackEl.textContent = state.currentPage - 1;
 
 
-  // unfocus ('blur') buttons
+// unfocus ('blur') buttons
   paginationBtnNextEl.blur()
   paginationBtnBackEl.blur()
-};
 
 const clickHandler = event => {
   // get clicked button
