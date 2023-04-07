@@ -5,6 +5,7 @@ import {
   sortingBtnRelevantEl
 } from '../common.js';
 import renderJobList from './JobList.js';
+import renderPaginationButtons from './Pagenation.js';
 
 const clickHandler = event => {
 
@@ -13,6 +14,9 @@ const clickHandler = event => {
 
   // stop function if no clicked button element
   if (!clickedButtonEl) return;
+
+  // update state (reset to page 1)
+  state.currentPage = 1;
 
   // check if intention is recent or revalent sorting
   const recent = clickedButtonEl.className.includes('--recent') ? true : false;
@@ -37,6 +41,10 @@ const clickHandler = event => {
       return b.relevanceScore - a.relevanceScore;     // if a.relevance =94 and b.relevance = 78, then a is more relevant. a should be sorted higher than b. return a negative number 
   });
   }
+
+  // ender Pagination buttons
+  renderPaginationButtons();
+
 
   // render job items in list
   renderJobList();

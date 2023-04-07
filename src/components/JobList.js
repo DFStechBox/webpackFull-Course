@@ -3,7 +3,8 @@ import {
     jobListSearchEl,
     jobDetailsContentEl,
     getData,
-    state
+    state,
+    RESULTS_PER_PAGE
 } from '../common.js';
 
 import renderJobDetails from './JobDetails.js';
@@ -15,7 +16,7 @@ const renderJobList = () => {
     jobListSearchEl.innerHTML = '';
 
     // dispay job items
-          state.searchJobItems.slice(state.currentPage * 7 - 7, state.currentPage * 7).forEach(jobItem => {
+          state.searchJobItems.slice(state.currentPage * RESULTS_PER_PAGE - RESULTS_PER_PAGE, state.currentPage * RESULTS_PER_PAGE).forEach(jobItem => {
         const newJobItemHTML = `
         <li class="job-item">
             <a class="job-item__link" href="${jobItem.id}">
@@ -42,26 +43,29 @@ const renderJobList = () => {
 }
 
 const clickHandler = async event => {
-  // prevent default behavior
-  event.preventDefault();
+    // prevent default behavior
+    event.preventDefault();
 
-  // get clicked job item element
-  const jobItemEl = event.target.closest('.job-item');
+    // get clicked job item element
+    const jobItemEl = event.target.closest('.job-item');
 
-  // remove active class from previously active job item
-  document.querySelector('.job-item--active')?.classList.remove('job-item--classList');
+    // remove active class from previously active job item
+    document.querySelector('.job-item--active')?.classList.remove('job-item--classList');
 
-  // add active class
-  jobItemEl.classList.add('job-item--active');
+    // add active class
+    jobItemEl.classList.add('job-item--active');
 
-  // empty job details section
-  jobDetailsContentEl.innerHTML = '';
+    // empty job details section
+    jobDetailsContentEl.innerHTML = '';
 
-  // render a spinner in job detail section
-  renderSpinner('job-details');
+    // render a spinner in job detail section
+    renderSpinner('job-details');
 
-  // get id of job
-  const id = jobItemEl.children[0].getAttribute('href');
+    // get id of job
+    const id = jobItemEl.children[0].getAttribute('href');
+    
+    // add id url to
+    history.pushState(null, '', `/#${id}`);
 
   try {
         // fetch job item data
