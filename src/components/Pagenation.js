@@ -55,5 +55,4 @@ const clickHandler = event => {
 
 paginationEl.addEventListener('click', clickHandler);
 
-export default renderPaginationButtons;
-
+export default renderPaginationButtons

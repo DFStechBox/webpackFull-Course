@@ -18,6 +18,8 @@
         "button-name": "off"
       }
     ],
-    "disown-opener": "off"
+    "disown-opener": "off",
+    "detect-css-reflows/composite": "off",
+    "detect-css-reflows/paint": "off"
   }
 }
